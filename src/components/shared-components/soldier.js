@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Soldier = ({ type, quantity, onClick }) => (
-  <div className={`soldier ${type}`} onClick={() => onClick()}>
+  <div className={`soldier ${type}`} onClick={() => onClick && onClick()}>
     <div className="quantity">
       {quantity}
     </div>

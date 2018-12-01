@@ -1,0 +1,17 @@
+.my-button {
+  height: 32px;
+  width: 100px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2e4eec;
+  color: white;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  &:hover {
+    background-color: #1d38bf;
+  }
+  &:focus {
+    outline: none;
+  }
+}
