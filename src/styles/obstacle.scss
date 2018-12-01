@@ -1,4 +1,4 @@
-.soldier {
+.obstacle {
   width: 150px;
   height: 250px;
   border-radius: 4px;
@@ -13,34 +13,22 @@
   }
   &.water {
     background-color: #4885ed;
-    background-image: url('/images/water_creep.png');
+    background-image: url('/images/water.png');
   }
   &.fire {
     background-color: #db3236;
-    background-image: url('/images/fire_creep.png');
+    background-image: url('/images/fire.png');
   }
   &.wood {
     background-color: #3cba54;
-    background-image: url('/images/wood_creep.png');
+    background-image: url('/images/wood.png');
   }
   &.metal {
     background-color: #e5e4e2;
-    background-image: url('/images/metal_creep.png');
+    background-image: url('/images/metal.png');
   }
   &.earth {
     background-color: #f4c20d;
-    background-image: url('/images/earth_creep.png');
-  }
-  .quantity {
-    position: absolute;
-    right: 7px;
-    bottom: 7px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    text-align: center;
-    line-height: 30px;
-    font-weight: bold;
+    background-image: url('/images/earth.png');
   }
 }

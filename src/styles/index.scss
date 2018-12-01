@@ -1,10 +1,12 @@
 @import 'main.scss';
 @import "loading-screen.scss";
 @import "soldier.scss";
+@import "obstacle.scss";
 
-html,body {
+html, body {
   height: 100%;
 }
+
 ul {
   list-style-type: none;
 }
@@ -14,3 +16,4 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
 }
+

@@ -1,3 +1,4 @@
-import Solider from './soldier';
+import Soldier from './soldier';
+import Obstacle from './obstacle';
 
-export { Solider };
+export { Soldier, Obstacle };
