@@ -60,7 +60,7 @@ class Main extends React.Component {
       (sol, index) => (sol ? (
         <Soldier
           key={keyGen()}
-          onClick={() => onClick(index)}
+          onClick={() => onClick && onClick(index)}
           type={sol.type}
           isSmall={isSmall}
           quantity={sol.quantity}
@@ -97,7 +97,8 @@ class Main extends React.Component {
       const i = selectedSoldiers.findIndex(sol => !sol);
       selectedSoldiers[i] = freeSoldiers[index];
       let newFreeSoldiers = [...freeSoldiers];
-      newFreeSoldiers[index].quantity -= 1;
+      const sol = newFreeSoldiers[index];
+      newFreeSoldiers[index] = { ...sol, quantity: sol.quantity - 1 };
       if (!newFreeSoldiers[index].quantity) {
         newFreeSoldiers = this.removeItem(newFreeSoldiers, index);
       }
@@ -106,7 +107,20 @@ class Main extends React.Component {
   }
 
   removeSoldier(index) {
-    // const { selectedSoldiers, freeSoldiers } = this.state;
+    const { selectedSoldiers, freeSoldiers } = this.state;
+    const removedSol = selectedSoldiers[index];
+    const newFreeSoldiers = [...freeSoldiers];
+    const i = newFreeSoldiers.findIndex(s => s && s.type === removedSol.type);
+    console.log('index', i);
+    if (i !== -1) {
+      const sol = newFreeSoldiers[i];
+      newFreeSoldiers[i] = { ...sol, quantity: sol.quantity + 1 };
+    } else {
+      const newI = newFreeSoldiers.findIndex(s => !s);
+      newFreeSoldiers[newI] = { ...removedSol, quantity: 1 };
+    }
+    const newSelectedSoldiers = this.removeItem(selectedSoldiers, index);
+    this.setState({ selectedSoldiers: newSelectedSoldiers, freeSoldiers: newFreeSoldiers });
   }
 
   currentHealth() {
@@ -116,7 +130,13 @@ class Main extends React.Component {
   }
 
   onModalClosed = () => {
-    this.setState({ showModal: false });
+    console.log('modal close');
+    const { userStore } = this.props;
+    this.setState({
+      showModal: false,
+      selectedSoldiers: new Array(5).fill(null),
+      freeSoldiers: userStore.soldiers,
+    });
   };
 
   render() {

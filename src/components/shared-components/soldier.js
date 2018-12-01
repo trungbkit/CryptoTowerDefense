@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Soldier = ({
   type, quantity, onClick, isSmall, showNumber = true, animate = false,
 }) => (
-  <div className={`soldier ${type} ${isSmall ? 'mini' : ''} ${animate ? 'animate' : ''}`} onClick={() => onClick && onClick()}>
+  <div className={`soldier ${type} ${isSmall ? 'mini' : ''} ${animate ? 'animate' : ''}`} onClick={() => onClick()}>
     {showNumber ? <div className="quantity">{quantity}</div> : null}
   </div>
 );
