@@ -6,6 +6,63 @@ import { Soldier } from '../shared-components';
 import keyGen from '../../utils/keyGenerator';
 import Notification from '../../models/notification';
 
+const SHOP_ITEMS = {
+  soldiers: [
+    {
+      id: 1,
+      type: 'fire',
+      price: 0.1,
+    },
+    {
+      id: 2,
+      type: 'water',
+      price: 0.1,
+    },
+    {
+      id: 3,
+      type: 'wood',
+      price: 0.1,
+    },
+    {
+      id: 4,
+      type: 'metal',
+      price: 0.1,
+    },
+    {
+      id: 5,
+      type: 'earth',
+      price: 0.1,
+    },
+  ],
+  obstacles: [
+    {
+      id: 6,
+      type: 'fire',
+      price: 0.05,
+    },
+    {
+      id: 7,
+      type: 'water',
+      price: 0.05,
+    },
+    {
+      id: 8,
+      type: 'wood',
+      price: 0.05,
+    },
+    {
+      id: 9,
+      type: 'metal',
+      price: 0.05,
+    },
+    {
+      id: 10,
+      type: 'earth',
+      price: 0.05,
+    },
+  ],
+};
+
 @inject('userStore', 'notificationStore')
 @observer
 class Main extends React.Component {
@@ -30,16 +87,23 @@ class Main extends React.Component {
       selectedObstacles: new Array(5).fill(null),
       freeObstacles: [],
       freeSoldiers: [],
-      showModal: false,
+      showAttackModal: false,
+      showShopModal: false,
     };
   }
 
-  onModalClosed = () => {
+  onAttackModalClosed = () => {
     const { userStore } = this.props;
     this.setState({
-      showModal: false,
+      showAttackModal: false,
       selectedSoldiers: new Array(5).fill(null),
       freeSoldiers: userStore.soldiers,
+    });
+  };
+
+  onShopModalClosed = () => {
+    this.setState({
+      showShopModal: false,
     });
   };
 
@@ -160,7 +224,8 @@ class Main extends React.Component {
       selectedSoldiers,
       freeObstacles,
       selectedObstacles,
-      showModal,
+      showAttackModal,
+      showShopModal,
     } = this.state;
     const { userStore } = this.props;
     return (
@@ -179,7 +244,12 @@ class Main extends React.Component {
                 <div className="username">Username 1</div>
               </div>
             </div>
-            <img className="buy" src="/images/shopping-cart.svg" alt="buy" />
+            <img
+              className="buy"
+              src="/images/shopping-cart.svg"
+              onClick={() => this.setState({ showShopModal: true })}
+              alt="buy"
+            />
           </section>
           <div className="title">My tower</div>
           <div className="d-flex align-items-center">
@@ -202,13 +272,16 @@ class Main extends React.Component {
           <div className="d-flex align-items-center">
             <div className="item-list">{this.renderSoldierList(userStore.soldiers)}</div>
             <div className="d-flex flex-fill justify-content-center">
-              <button className="my-button ml-3" onClick={() => this.setState({ showModal: true })}>
+              <button
+                className="my-button ml-3"
+                onClick={() => this.setState({ showAttackModal: true })}
+              >
                 Attack
               </button>
             </div>
           </div>
         </div>
-        <Modal open={showModal} onClose={this.onModalClosed} center>
+        <Modal open={showAttackModal} onClose={this.onAttackModalClosed} center>
           <h3>Setup for your army</h3>
           <div className="item-list">
             {this.renderSoldierList(freeSoldiers, i => this.selectSoldier(i), true)}
@@ -229,6 +302,27 @@ class Main extends React.Component {
             <button className="my-button" onClick={this.attack}>
               Start attack
             </button>
+          </div>
+        </Modal>
+        <Modal
+          open={showShopModal}
+          onClose={this.onShopModalClosed}
+          classNames={{ modal: 'shop-modal' }}
+        >
+          <h3>Shop</h3>
+          <div className="item-list">
+            {SHOP_ITEMS.soldiers.map(s => (
+              <div key={s.id} className="shop-item">
+                <Soldier type={s.type} showNumber={false} animate={false} />
+                <div className="price">{s.price} ETH</div>
+              </div>
+            ))}
+            {SHOP_ITEMS.obstacles.map(o => (
+              <div key={o.id} className="shop-item">
+                <div className={`obstacle ${o.type}`} onClick={() => {}} key={keyGen()} />
+                <div className="price">{o.price} ETH</div>
+              </div>
+            ))}
           </div>
         </Modal>
       </div>
