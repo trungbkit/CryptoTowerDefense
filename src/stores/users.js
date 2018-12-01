@@ -13,6 +13,9 @@ class UserStore {
   @observable
   obstacles = [];
 
+  @observable
+  soldiers = [];
+
   @computed
   obstacleCount() {
     return this.obstacles.length;

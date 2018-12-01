@@ -1,5 +1,5 @@
-import Album from './album';
-import Photo from './photo';
+import Soldier from './soldier';
+import Class from './class';
 import User from './user';
 
-export { Album, Photo, User };
+export { Soldier, Class, User };
