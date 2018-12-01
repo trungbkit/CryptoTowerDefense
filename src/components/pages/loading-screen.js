@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const LoadingScreen = ({ progress }) => (
   <div className="loading-screen">
     <div className="logo">
-      <img src="/images/logo.svg" alt="Logo" />
       <div className="text">Loading...</div>
     </div>
     <div className="progress-bar">

@@ -39,9 +39,15 @@
     height: 250px;
     border-radius: 4px;
     border: 1px dashed #ddd;
+    &.mini {
+      height: 60px;
+      width: 60px;
+      border-radius: 30px;
+    }
   }
 }
 .styles_modal__gNwvD {
-  width: 1000px;
-  height: 400px;
+  width: 860px;
+  height: 530px;
+  max-width: 1600px;
 }
