@@ -5,19 +5,45 @@ class UserStore {
   id = null;
 
   @observable
-  username = '';
+  username = 'Username 1';
 
   @observable
   address = null;
 
   @observable
-  obstacles = [];
+  obstacles = ['fire', 'metal', 'wood', 'water', 'earth'];
 
   @observable
-  soldiers = [];
+  soldiers = [
+    {
+      id: 1,
+      type: 'earth',
+      quantity: 4,
+    },
+    {
+      id: 2,
+      type: 'wood',
+      quantity: 4,
+    },
+    {
+      id: 3,
+      type: 'water',
+      quantity: 2,
+    },
+    {
+      id: 4,
+      type: 'fire',
+      quantity: 4,
+    },
+    {
+      id: 5,
+      type: 'metal',
+      quantity: 1,
+    }
+  ];
 
   @computed
-  obstacleCount() {
+  get obstacleCount() {
     return this.obstacles.length;
   }
 

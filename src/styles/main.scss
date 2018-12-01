@@ -21,3 +21,17 @@
   font-weight: 500;
   padding-left: 3px;
 }
+.title {
+  font-weight: 14px;
+  font-weight: bold;
+}
+.item-list {
+  display: flex;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px dashed #333;
+  margin: 5px 0;
+  .obstacle, .soldier {
+    margin: 0 5px;
+  }
+}
