@@ -39,12 +39,22 @@
     height: 250px;
     border-radius: 4px;
     border: 1px dashed #ddd;
+    font-size: 100px;
+    color: #eee;
+    justify-content: center;
+    align-items: center;
+    display: flex;
     &.mini {
       height: 60px;
       width: 60px;
       border-radius: 30px;
     }
   }
+}
+.buy {
+  width: 32px;
+  margin: 5px;
+  cursor: pointer;
 }
 .styles_modal__gNwvD {
   width: 860px;

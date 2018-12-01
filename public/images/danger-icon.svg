@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>02AB4599-BD68-422D-B90C-FB15FF83D273</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24" rx="4"></rect>
+        <path d="M14.4999869,17.5000012 C14.4999869,18.1874996 14.255196,18.7760397 13.7656136,19.265622 C13.2760313,19.7552043 12.6874912,19.9999952 11.9999928,19.9999952 C11.3124945,19.9999952 10.7239544,19.7552043 10.2343721,19.265622 C9.74478973,18.7760397 9.49999881,18.1874996 9.49999881,17.5000012 C9.49999881,16.8125028 9.74478973,16.2239627 10.2343721,15.7343804 C10.7239544,15.2447981 11.3124945,15.0000072 11.9999928,15.0000072 C12.6874912,15.0000072 13.2760313,15.2447981 13.7656136,15.7343804 C14.255196,16.2239627 14.4999869,16.8125028 14.4999869,17.5000012 Z M9.78124814,4.78128152 C9.78124814,4.57294852 9.85416447,4.39065745 9.99999762,4.23440782 C10.1458308,4.07815819 10.3229134,4.00003338 10.5312463,4.00003338 L13.4687393,4.00003338 C13.6770723,4.00003338 13.8541549,4.07815819 13.9999881,4.23440782 C14.1458212,4.39065745 14.2187376,4.57294852 14.2187376,4.78128152 L13.7812386,13.2812613 C13.7812386,13.4895942 13.7083223,13.6614688 13.5624891,13.796885 C13.416656,13.9323012 13.2395734,14.0000095 13.0312404,14.0000095 L10.9687453,14.0000095 C10.7604123,14.0000095 10.5833297,13.9323012 10.4374966,13.796885 C10.2916634,13.6614688 10.2187471,13.4895942 10.2187471,13.2812613 L9.78124814,4.78128152 Z" id="path-3"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forms/TextInput/Input/Error" transform="translate(-257.000000, -8.000000)">
+            <g id="Group" transform="translate(257.000000, 8.000000)">
+                <g id="Base/Container/Box/4pt">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Rectangle" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <g id="Base/UI/Color/Solid/Red/50" mask="url(#mask-2)" fill="#FFEDE6" fill-rule="evenodd">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                    <g id="Base/UI/Border/4pt/None" mask="url(#mask-2)">
+                        <rect id="Base/Container/Border/Default" x="0" y="0" width="24" height="24" rx="4"></rect>
+                    </g>
+                </g>
+                <g id="Icon/24x24/Alert">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="" fill="#344563" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <g id="Base/UI/Color/Solid/Red" mask="url(#mask-4)" fill="#FB5012" fill-rule="evenodd">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,9 +4,10 @@ import { observer, inject } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Soldier } from '../shared-components';
 import keyGen from '../../utils/keyGenerator';
+import Notification from '../../models/notification';
 
+@inject('userStore', 'notificationStore')
 @observer
-@inject('userStore')
 class Main extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { soldiers, obstacles } = nextProps.userStore;
@@ -33,6 +34,27 @@ class Main extends React.Component {
     };
   }
 
+  onModalClosed = () => {
+    const { userStore } = this.props;
+    this.setState({
+      showModal: false,
+      selectedSoldiers: new Array(5).fill(null),
+      freeSoldiers: userStore.soldiers,
+    });
+  };
+
+  saveObstacles = () => {
+    const { notificationStore } = this.props;
+    notificationStore.push(
+      new Notification(keyGen(), 'Save obstacles', 'Saved successful!!!', 'success')
+    );
+  };
+
+  attack = () => {
+    const { notificationStore } = this.props;
+    notificationStore.push(new Notification(keyGen(), 'Attack', 'Attacked', 'success'));
+  };
+
   removeItem(list, index) {
     const { length } = list;
     const newList = [...list];
@@ -40,37 +62,6 @@ class Main extends React.Component {
       newList[i] = newList[i + 1] || null;
     }
     return newList;
-  }
-
-  renderObstacleList(list, onClick) {
-    return list.map(
-      (obs, index) => (obs ? (
-        <div className={`obstacle ${obs}`} onClick={() => onClick(index)} key={keyGen()} />
-      ) : (
-        <div className="empty-item" key={keyGen()} />
-      ))
-    );
-  }
-
-  renderSoldierList(list, onClick, isSmall, showNumber = true, animate = false) {
-    if (!list) {
-      return null;
-    }
-    return list.map(
-      (sol, index) => (sol ? (
-        <Soldier
-          key={keyGen()}
-          onClick={() => onClick && onClick(index)}
-          type={sol.type}
-          isSmall={isSmall}
-          quantity={sol.quantity}
-          showNumber={showNumber}
-          animate={animate}
-        />
-      ) : (
-        <div className={`empty-item ${isSmall ? 'mini' : ''}`} key={keyGen()} />
-      ))
-    );
   }
 
   selectObstacle(index) {
@@ -111,7 +102,6 @@ class Main extends React.Component {
     const removedSol = selectedSoldiers[index];
     const newFreeSoldiers = [...freeSoldiers];
     const i = newFreeSoldiers.findIndex(s => s && s.type === removedSol.type);
-    console.log('index', i);
     if (i !== -1) {
       const sol = newFreeSoldiers[i];
       newFreeSoldiers[i] = { ...sol, quantity: sol.quantity + 1 };
@@ -129,15 +119,40 @@ class Main extends React.Component {
     return res;
   }
 
-  onModalClosed = () => {
-    console.log('modal close');
-    const { userStore } = this.props;
-    this.setState({
-      showModal: false,
-      selectedSoldiers: new Array(5).fill(null),
-      freeSoldiers: userStore.soldiers,
-    });
-  };
+  renderObstacleList(list, onClick) {
+    return list.map(
+      (obs, index) => (obs ? (
+        <div className={`obstacle ${obs}`} onClick={() => onClick(index)} key={keyGen()} />
+      ) : (
+        <div className="empty-item" key={keyGen()}>
+          {index + 1}
+        </div>
+      ))
+    );
+  }
+
+  renderSoldierList(list, onClick, isSmall, showNumber = true, animate = false) {
+    if (!list) {
+      return null;
+    }
+    return list.map(
+      (sol, index) => (sol ? (
+        <Soldier
+          key={keyGen()}
+          onClick={() => onClick && onClick(index)}
+          type={sol.type}
+          isSmall={isSmall}
+          quantity={sol.quantity}
+          showNumber={showNumber}
+          animate={animate}
+        />
+      ) : (
+        <div className={`empty-item ${isSmall ? 'mini' : ''}`} key={keyGen()}>
+          {!isSmall ? index + 1 : ''}
+        </div>
+      ))
+    );
+  }
 
   render() {
     const {
@@ -151,24 +166,31 @@ class Main extends React.Component {
     return (
       <div className="main py-4">
         <div className="container">
-          <section className="align-items-center d-flex mb-4 tower-info">
-            <div
-              className="tower-avatar"
-              style={{ backgroundImage: 'url(/images/sand-castle.png)' }}
-            />
-            <div className="d-flex flex-column ml-2">
-              <div className="health-bar">
-                <div style={{ backgroundColor: '#FF3636', width: `${this.currentHealth()}%` }} />
+          <section className="align-items-center justify-content-between d-flex mb-4 tower-info">
+            <div className="d-flex align-items-center">
+              <div
+                className="tower-avatar"
+                style={{ backgroundImage: 'url(/images/sand-castle.png)' }}
+              />
+              <div className="d-flex flex-column ml-2">
+                <div className="health-bar">
+                  <div style={{ backgroundColor: '#FF3636', width: `${this.currentHealth()}%` }} />
+                </div>
+                <div className="username">Username 1</div>
               </div>
-              <div className="username">Username 1</div>
             </div>
+            <img className="buy" src="/images/shopping-cart.svg" alt="buy" />
           </section>
           <div className="title">My tower</div>
           <div className="d-flex align-items-center">
             <div className="item-list">
               {this.renderObstacleList(selectedObstacles, i => this.removeObstacle(i))}
             </div>
-            <button className="my-button ml-3">Save</button>
+            <div className="d-flex flex-fill justify-content-center align-items-center">
+              <button className="my-button ml-3" onClick={this.saveObstacles}>
+                Save
+              </button>
+            </div>
           </div>
           <div className="tower">
             <div className="title">Obstacle queue</div>
@@ -179,9 +201,11 @@ class Main extends React.Component {
           <div className="title">My soldies</div>
           <div className="d-flex align-items-center">
             <div className="item-list">{this.renderSoldierList(userStore.soldiers)}</div>
-            <button className="my-button ml-3" onClick={() => this.setState({ showModal: true })}>
-              Attack
-            </button>
+            <div className="d-flex flex-fill justify-content-center">
+              <button className="my-button ml-3" onClick={() => this.setState({ showModal: true })}>
+                Attack
+              </button>
+            </div>
           </div>
         </div>
         <Modal open={showModal} onClose={this.onModalClosed} center>
@@ -202,7 +226,9 @@ class Main extends React.Component {
             <input type="text" className="my-input" placeholder="Target address" />
           </div>
           <div className="d-flex justify-content-center mt-2">
-            <button className="my-button">Start attack</button>
+            <button className="my-button" onClick={this.attack}>
+              Start attack
+            </button>
           </div>
         </Modal>
       </div>
@@ -212,6 +238,7 @@ class Main extends React.Component {
 
 Main.propTypes = {
   userStore: PropTypes.instanceOf(PropTypes.object),
+  notificationStore: PropTypes.instanceOf(PropTypes.object),
 };
 
 export default Main;

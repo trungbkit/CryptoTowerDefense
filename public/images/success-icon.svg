@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>8ADC6EFB-91C5-45E2-9940-280E77AFEF54</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24" rx="4"></rect>
+        <path d="M9.43748704,17.7187507 L4.21874948,12.531263 C4.07291633,12.3854299 4,12.1979303 4,11.9687644 C4,11.7395984 4.07291633,11.5520989 4.21874948,11.4062657 L5.37499672,10.2812684 C5.52082987,10.1146023 5.70312094,10.031269 5.92187042,10.031269 C6.1406199,10.031269 6.33332793,10.1146023 6.49999404,10.2812684 L9.99998569,13.7812601 L17.4999678,6.28127794 C17.6666339,6.11461183 17.859342,6.03127854 18.0780914,6.03127854 C18.2968409,6.03127854 18.479132,6.11461183 18.6249651,6.28127794 L19.7812124,7.40627526 C19.9270455,7.5521084 19.9999619,7.73960796 19.9999619,7.96877392 C19.9999619,8.19793988 19.9270455,8.38543943 19.7812124,8.53127258 L10.5624844,17.7187507 C10.4166512,17.8854168 10.2291517,17.9687501 9.99998569,17.9687501 C9.77081973,17.9687501 9.58332018,17.8854168 9.43748704,17.7187507 Z" id="path-3"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forms/TextInput/Input/Success" transform="translate(-257.000000, -8.000000)">
+            <g id="Icon" transform="translate(257.000000, 8.000000)">
+                <g id="Base/Container/Box/4pt">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Rectangle" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <g id="Base/UI/Color/Solid/GreenBrand/50" mask="url(#mask-2)" fill="#D5FDF6" fill-rule="evenodd">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                    <g id="Base/UI/Border/4pt/None" mask="url(#mask-2)">
+                        <rect id="Base/Container/Border/Default" x="0" y="0" width="24" height="24" rx="4"></rect>
+                    </g>
+                </g>
+                <g id="Icon/24x24/Check">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="" fill="#344563" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <g id="Base/UI/Color/Solid/GreenBrand/700" mask="url(#mask-4)" fill="#09CAA9" fill-rule="evenodd">
+                        <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

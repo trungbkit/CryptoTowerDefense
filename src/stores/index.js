@@ -1,3 +1,4 @@
 import userStore from './users';
+import notificationStore from './notification';
 
-export default { userStore };
+export default { userStore, notificationStore };

@@ -21,7 +21,7 @@
       line-height: 26px;
     }
   }
-  &.animate {
+  &.animate:hover {
     animation: slide-top 1s linear infinite both;
   }
   &:hover {
@@ -65,8 +65,14 @@
   0% {
     transform: translateY(0px);
   }
+  25% {
+    transform: translateY(-3px);
+  }
   50% {
-    transform: translateY(5px);
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(3px);
   }
   100% {
     transform: translateY(0px);

@@ -1,0 +1,105 @@
+.notification-frame {
+  border-radius: 2px;
+  position: fixed;
+  z-index: 1001;
+  right: 24px;
+  top: 24px;
+  .notification-item {
+    width: 360px;
+    // height: 104px;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    -webkit-box-shadow: 3px 3px 20px -2px rgba(0,0,0,0.36);
+    -moz-box-shadow: 3px 3px 20px -2px rgba(0,0,0,0.36);
+    box-shadow: 3px 3px 10px -2px rgba(0,0,0,0.36);
+    padding: 16px;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4s;
+    animation: fadein 0.5s, fadeout 0.5s 4s;
+
+    .title-container {
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
+      color: #344563;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 4px;
+        }
+      }
+
+      .close {
+        font-size: 24px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #b3bac5;
+        margin-top: -10px;
+        &:hover {
+          color: #2424a0;
+          font-size: 26px;
+        }
+      }
+    }
+    .message {
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.43;
+      letter-spacing: normal;
+      color: #344563;
+      margin-top: 8px;
+    }
+  }
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@media screen and (max-width: 768px) {
+  .notification-frame {
+    top: 24px;
+    right: 50%;
+    .notification-item {
+      width: 360px;
+      margin-right: -180px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .notification-frame {
+    top: 24px;
+    right: 50%;
+    .notification-item {
+      width: 300px;
+      margin-right: -150px;
+    }
+  }
+}
