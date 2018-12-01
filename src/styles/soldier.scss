@@ -3,4 +3,44 @@
   height: 250px;
   border-radius: 4px;
   background-color: #eee;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.4);
+  }
+  &.water {
+    background-color: aquamarine;
+    background-image: url('/images/water_creep.png');
+  }
+  &.fire {
+    background-color: crimson;
+    background-image: url('/images/fire_creep.png');
+  }
+  &.wood {
+    background-color: #3cba54;
+    background-image: url('/images/wood_creep.png');
+  }
+  &.metal {
+    background-color: aliceblue;
+    background-image: url('/images/metal_creep.png');
+  }
+  &.earth {
+    background-color: #f4c20d;
+    background-image: url('/images/earth_creep.png');
+  }
+  .quantity {
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+  }
 }
