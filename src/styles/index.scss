@@ -1,3 +1,16 @@
 @import 'main.scss';
 @import "loading-screen.scss";
 @import "soldier.scss";
+
+html,body {
+  height: 100%;
+}
+ul {
+  list-style-type: none;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
