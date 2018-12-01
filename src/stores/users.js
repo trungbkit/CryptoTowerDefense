@@ -1,24 +1,37 @@
-import { observable, computed, action } from 'mobx';
-import User from '../models/user';
-import { request } from '../api/request';
+import { observable, action, computed } from 'mobx';
 
 class UserStore {
   @observable
-  users = [];
+  id = null;
+
+  @observable
+  username = '';
+
+  @observable
+  address = null;
+
+  @observable
+  obstacles = [];
 
   @computed
-  get countUser() {
-    return this.users.length;
-  }
-
-  async fetchData() {
-    const res = await request('https://jsonplaceholder.typicode.com/users', null, 'GET');
-    this.setUsers(res.map(u => new User(u)));
+  obstacleCount() {
+    return this.obstacles.length;
   }
 
   @action.bound
-  setUsers(users) {
-    this.users = users;
+  setData(id, username, address, obstacles) {
+    if (id) {
+      this.id = id;
+    }
+    if (username) {
+      this.username = username;
+    }
+    if (address) {
+      this.address = address;
+    }
+    if (obstacles) {
+      this.obstacles = obstacles;
+    }
   }
 }
 
